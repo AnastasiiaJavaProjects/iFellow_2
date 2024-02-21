@@ -5,16 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class RunTest {
     //its RunTest origin
+
     @Test
     public void test1(){
         System.out.println("Successful test");
-        Assertions.assertEquals("Test1", "Test1");
+        Assertions.assertEquals("Test", "Test");
     }
 
     @Test
     public void test2(){
         System.out.println("Error test");
-        Assertions.assertEquals("BBB", "bbb");
+        Assertions.assertEquals("AAA", "aaa");
     }
 
     @BeforeEach
