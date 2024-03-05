@@ -22,11 +22,15 @@ public class TaskCreationPage {
         Assertions.assertEquals("Создание задачи", taskCreationHeadline.getText());
     }
 
+    private SelenideElement getVersionByText(String version){
+        return $x("//select[@id='fixVersions']//option[contains(.,'" + version + "')]");
+    }
+
     public void createTask(String summary, String description, String version){
         summaryInput.shouldBe(Condition.visible).sendKeys(summary);
         textButton.shouldBe(Condition.visible).click();
         descriptionInput.sendKeys(description);
-        $x("//select[@id='fixVersions']//option[contains(.,'" + version + "')]").shouldBe(Condition.visible).click();
+        getVersionByText(version).shouldBe(Condition.visible).click();
         createButton.shouldBe(Condition.visible).click();
     }
 

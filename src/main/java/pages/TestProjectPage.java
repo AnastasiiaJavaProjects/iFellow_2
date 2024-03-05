@@ -37,13 +37,17 @@ public class TestProjectPage {
     }
     public void checkTasksNumber(int oldTasksNumber) {
         String expected = "1 из " + (oldTasksNumber + 1);
-        $x("//div[@class='showing']//span").shouldHave(text(expected), Duration.ofSeconds(5));
+        numberOfTasks.shouldHave(text(expected), Duration.ofSeconds(5));
+    }
+
+    private SelenideElement getSummaryByText(String summary){
+        return $x("//span[.='" + summary + "']");
     }
 
     public TaskPage sortByCreatedDate(String summary){
         sortCriteria.shouldBe(Condition.visible).click();
         sortByCreationDate.shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
-        $x("//span[.='" + summary + "']").click();
+        getSummaryByText(summary).click();
         return new TaskPage();
     }
 }
