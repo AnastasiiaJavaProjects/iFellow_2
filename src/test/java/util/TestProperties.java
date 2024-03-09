@@ -9,7 +9,7 @@ public class TestProperties {
     private static Properties PROPERTIES;
 
     static{
-        try(FileInputStream fileInputStream = new FileInputStream("src/main/resources/test.properties")){
+        try(FileInputStream fileInputStream = new FileInputStream("src/test/resources/test.properties")){
            PROPERTIES = new Properties();
            PROPERTIES.load(fileInputStream);
         }catch(IOException e){

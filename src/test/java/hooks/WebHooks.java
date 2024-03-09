@@ -1,6 +1,5 @@
 package hooks;
 
-import org.junit.jupiter.api.BeforeEach;
 import pages.JiraLoginPage;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -9,7 +8,6 @@ import static util.TestProperties.getProperty;
 
 public class WebHooks {
 
-    @BeforeEach
     public void loginToJira(){
         openPage(getProperty("url"));
         JiraLoginPage jiraLoginPage = new JiraLoginPage();
