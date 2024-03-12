@@ -1,5 +1,6 @@
 package tests;
 
+import hooks.WebHooks;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -7,8 +8,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features={"classpath:features"},
-        glue={"steps", "hooks"},
+        glue={"classpath:steps", "classpath:hooks"},
         plugin = {"pretty"}
         )
-public class TestClass {
+public class TestClass extends WebHooks {
 }
