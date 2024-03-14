@@ -27,8 +27,8 @@ public class RickAndMortyTest extends WebHooks {
         String personsLocation = response4.body().jsonPath().getString("location.name");
         String personsSpecies = response4.body().jsonPath().getString("species");
 
-        String mortysLocation = response1.body().jsonPath().getString("location.name");
-        String mortysSpecies = response1.body().jsonPath().getString("species");
+        String mortysLocation = response2.body().jsonPath().getString("location.name");
+        String mortysSpecies = response2.body().jsonPath().getString("species");
 
         Assertions.assertEquals(mortysSpecies, personsSpecies);
         Assertions.assertNotEquals(mortysLocation, personsLocation);
