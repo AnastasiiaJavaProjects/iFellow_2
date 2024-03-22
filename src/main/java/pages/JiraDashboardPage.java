@@ -1,15 +1,17 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.Assertions;
+import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraDashboardPage {
 
-    private final SelenideElement dashboardHeadline = $x("//h1[text()='System Dashboard']");
+    private final SelenideElement dashboardHeadline = $x("//h1[text()='System Dashboard']").as("Заголовок \"System Dashboard\"");
 
+    @Step("Проверка заголовка \"System Dashboard\"")
     public void verifyDashboardHeadline(){
-        Assertions.assertEquals("System Dashboard", dashboardHeadline.getText());
+        dashboardHeadline.shouldHave(text("System Dashboard"));
     }
 }
