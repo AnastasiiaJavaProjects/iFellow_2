@@ -40,7 +40,6 @@ public class TaskCreationPage {
         createButton.shouldBe(Condition.visible).click();
     }
 
-//    @Step("Нажимаем кнопку \"Исполнено\"")
     public void resolveTask (){
         resolveButton.shouldBe(Condition.visible).click();
     }
