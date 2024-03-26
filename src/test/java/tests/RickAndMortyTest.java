@@ -1,36 +1,26 @@
 package tests;
 
 import hooks.WebHooks;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import steps.RestSteps;
 
-import java.util.List;
+import static steps.RestSteps.*;
 
 public class RickAndMortyTest extends WebHooks {
 
     @Test
     public void test1(){
-        Response response1 = new RestSteps().getApi("https://rickandmortyapi.com/api/character?name=Morty", 200);
-        String id = response1.body().jsonPath().getString("results[0].id");
+        String mortysId = getCharacterId("Morty");
+        String mortysUrl = getCharacterUrl(mortysId);
+        String mortysLocation = getCharactersLocation(mortysUrl);
+        String mortysSpecies = getCharactersSpecies(mortysUrl);
 
-        Response response2 = new RestSteps().getApi("https://rickandmortyapi.com/api/character/" + id, 200);
-        List<String> episodes = response2.body().jsonPath().getList("episode");
-        String mortysLastEpisodeUrl = episodes.get(episodes.size()-1);
+        String lastCharacterEpisodeUrl = getCharacterLastEpisodeUrl(mortysId);
+        String lastCharacterUrl = getLastCharacterUrl(lastCharacterEpisodeUrl);
+        String lastCharactersLocation = getCharactersLocation(lastCharacterUrl);
+        String lastCharactersSpecies = getCharactersSpecies(lastCharacterUrl);
 
-        Response response3 = new RestSteps().getApi(mortysLastEpisodeUrl, 200);
-        List<String> characters = response3.body().jsonPath().getList("characters");
-        String lastCharacterUrl = characters.get(characters.size()-1);
-
-        Response response4 = new RestSteps().getApi(lastCharacterUrl, 200);
-        String personsLocation = response4.body().jsonPath().getString("location.name");
-        String personsSpecies = response4.body().jsonPath().getString("species");
-
-        String mortysLocation = response2.body().jsonPath().getString("location.name");
-        String mortysSpecies = response2.body().jsonPath().getString("species");
-
-        Assertions.assertEquals(mortysSpecies, personsSpecies);
-        Assertions.assertNotEquals(mortysLocation, personsLocation);
+        Assertions.assertEquals(mortysSpecies, lastCharactersSpecies);
+        Assertions.assertNotEquals(mortysLocation, lastCharactersLocation);
     }
 }
