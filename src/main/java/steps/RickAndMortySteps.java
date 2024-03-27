@@ -6,7 +6,7 @@ import java.util.List;
 
 import static helpers.RestHelpers.getApi;
 
-public class RestSteps {
+public class RickAndMortySteps {
 
     public static String getCharacterId(String name){
         Response response = getApi("https://rickandmortyapi.com/api/character?name=" + name, 200);

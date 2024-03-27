@@ -6,21 +6,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-import static helpers.RestHelpers.postApi;
+import static steps.JsonSteps.getJsonObject;
+import static steps.JsonSteps.postRequest;
 
 public class JsonTest {
+
+    String path = "src/test/resources/json/user.json";
 
     @Test
     public void test2() throws IOException {
 
-        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/json/user.json"))));
+        JSONObject body = getJsonObject(path);
         body.put("name", "Tomato");
         body.put("job", "Eat maket");
 
-        Response response = postApi("https://reqres.in/", "/api/users", body.toString(), 201);
+        Response response = postRequest(body);
         Assertions.assertEquals("Tomato", response.body().path("name"));
         Assertions.assertEquals("Eat maket", response.body().path("job"));
     }

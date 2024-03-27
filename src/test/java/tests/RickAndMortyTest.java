@@ -4,7 +4,7 @@ import hooks.WebHooks;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static steps.RestSteps.*;
+import static steps.RickAndMortySteps.*;
 
 public class RickAndMortyTest extends WebHooks {
 
