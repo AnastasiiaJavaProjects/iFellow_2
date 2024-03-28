@@ -5,12 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static steps.RickAndMortySteps.*;
+import static util.TestProperties.getProperty;
 
 public class RickAndMortyTest extends WebHooks {
 
     @Test
     public void test1(){
-        String mortysId = getCharacterId("Morty");
+        String mortysId = getCharacterId(getProperty("test.character"));
         String mortysUrl = getCharacterUrl(mortysId);
         String mortysLocation = getCharactersLocation(mortysUrl);
         String mortysSpecies = getCharactersSpecies(mortysUrl);

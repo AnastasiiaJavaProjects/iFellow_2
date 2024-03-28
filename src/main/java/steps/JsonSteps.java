@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static helpers.RestHelpers.postApi;
+import static util.TestProperties.getProperty;
 
 public class JsonSteps {
 
@@ -16,6 +17,6 @@ public class JsonSteps {
     }
 
     public static Response postRequest(JSONObject body){
-        return postApi("https://reqres.in/", "/api/users", body.toString(), 201);
+        return postApi(getProperty("json.baseurl"), getProperty("json.posturl"), body.toString(), 201);
     }
 }

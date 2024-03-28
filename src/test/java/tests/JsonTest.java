@@ -9,20 +9,19 @@ import java.io.IOException;
 
 import static steps.JsonSteps.getJsonObject;
 import static steps.JsonSteps.postRequest;
+import static util.TestProperties.getProperty;
 
 public class JsonTest {
-
-    String path = "src/test/resources/json/user.json";
 
     @Test
     public void test2() throws IOException {
 
-        JSONObject body = getJsonObject(path);
-        body.put("name", "Tomato");
-        body.put("job", "Eat maket");
+        JSONObject body = getJsonObject(getProperty("jsonobject.path"));
+        body.put(getProperty("key1"), getProperty("value1"));
+        body.put(getProperty("key2"), getProperty("value2"));
 
         Response response = postRequest(body);
-        Assertions.assertEquals("Tomato", response.body().path("name"));
-        Assertions.assertEquals("Eat maket", response.body().path("job"));
+        Assertions.assertEquals(getProperty("value1"), response.body().path(getProperty("key1")));
+        Assertions.assertEquals(getProperty("value2"), response.body().path(getProperty("key2")));
     }
 }
