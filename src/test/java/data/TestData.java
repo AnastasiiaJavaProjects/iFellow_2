@@ -1,4 +1,4 @@
-package tests;
+package data;
 
 public class TestData {
 

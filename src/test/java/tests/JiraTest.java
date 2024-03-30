@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import pages.TaskCreationPage;
 import pages.TaskPage;
 
-import static tests.TestData.*;
+import static data.TestData.*;
 
 @DisplayName("JiraTest")
 public class JiraTest extends WebHooks {
