@@ -19,19 +19,19 @@ public class JsonSteps {
     private Response response;
     private JSONObject body;
 
-    @Дано("Объект из файла .json")
+    @Дано("объект из файла .json")
     public void getJsonObject() throws IOException {
         body = new JSONObject(new String(Files.readAllBytes(Paths.get(getProperty("jsonobject.path")))));
     }
 
-    @Когда("Отправляем POST запрос с новыми полями объекта")
+    @Когда("отправляем POST запрос с новыми полями объекта")
     public void postRequest(){
         body.put(getProperty("key1"), getProperty("value1"));
         body.put(getProperty("key2"), getProperty("value2"));
         response = postApi(getProperty("json.baseurl"), getProperty("json.posturl"), body.toString(), 201);
     }
 
-    @Тогда("Проверяем, что полученный response имеет валидные данные по значениям key и value")
+    @Тогда("проверяем, что полученный response имеет валидные данные по значениям key и value")
     public void verifyValues(){
         Assertions.assertEquals(getProperty("value1"), response.body().path(getProperty("key1")));
         Assertions.assertEquals(getProperty("value2"), response.body().path(getProperty("key2")));

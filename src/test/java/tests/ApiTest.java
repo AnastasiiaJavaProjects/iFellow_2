@@ -11,5 +11,5 @@ import org.junit.runner.RunWith;
         glue={"classpath:steps", "classpath:hooks"},
         plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
-public class AllureTest extends WebHooks {
+public class ApiTest extends WebHooks {
 }
