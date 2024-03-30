@@ -1,5 +1,6 @@
 package tests;
 
+import hooks.WebHooks;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -8,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features={"classpath:features"},
         glue={"classpath:steps", "classpath:hooks"},
-        plugin = {"pretty"}
+        plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
-public class TestClass {
+public class AllureTest extends WebHooks {
 }
