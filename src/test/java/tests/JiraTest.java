@@ -3,9 +3,10 @@ package tests;
 import hooks.WebHooks;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.*;
+import pages.TaskCreationPage;
+import pages.TaskPage;
 
-import static util.TestProperties.getProperty;
+import static tests.TestData.*;
 
 @DisplayName("JiraTest")
 public class JiraTest extends WebHooks {
@@ -14,11 +15,11 @@ public class JiraTest extends WebHooks {
     @Test
     public void createNewTask(){
         TaskCreationPage taskCreationPage = new TaskCreationPage();
-        taskCreationPage.createTask(getProperty("summary"), getProperty("description"), getProperty("version"));
+        taskCreationPage.createTask(SUMMARY, DESCRIPTION, VERSION);
 
-        TaskPage taskPage =  taskCreationPage.clickTask(getProperty("summary"), getProperty("status.todo"));
-        taskPage.setInProgressStatus(getProperty("status.inprogress"));
-        taskPage.setResolvedStatus(taskCreationPage, getProperty("status.resolved"));
-        taskPage.setDoneStatus(getProperty("status.done"));
+        TaskPage taskPage =  taskCreationPage.clickTask(SUMMARY, TODO_STATUS);
+        taskPage.setInProgressStatus(IN_PROGRESS_STATUS);
+        taskPage.setResolvedStatus(taskCreationPage, RESOLVED_STATUS);
+        taskPage.setDoneStatus(DONE_STATUS);
     }
 }
